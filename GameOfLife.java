@@ -11,10 +11,10 @@ public class GameOfLife {
 		String fileName = args[0];
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
-		//// test1(fileName);
+		test1(fileName);
 		//// test2(fileName);
-		//// test3(fileName, 3);
-		play(fileName);
+		test3(fileName, 3);
+		//// play(fileName);
 	}
 	
 	// Reads the data file and prints the initial board.
@@ -74,8 +74,8 @@ public class GameOfLife {
 			String str = in.readLine();
 			int length = str.length();
 			if (length != 0) {
-				for (int j = 1; j <= length; j++) {
-					if (str.charAt(j-1) == 'x') {
+				for (int j = 1; j < length; j++) {
+					if (str.charAt(j) == 'x') {
 						board[i][j] = 1;
 					}
 				}
@@ -90,8 +90,8 @@ public class GameOfLife {
 	public static int[][] evolve(int[][] board) {
 		int[][] nextGen = new int[board.length][board[0].length];
 		
-		for (int i = 1; i < board.length - 2; i++) {
-			for (int j = 1; j < board[0].length - 2; j++) {
+		for (int i = 1; i < board.length - 1; i++) {
+			for (int j = 1; j < board[0].length - 1; j++) {
 				nextGen[i][j] = cellValue(board, i, j);
 			}
 		}
