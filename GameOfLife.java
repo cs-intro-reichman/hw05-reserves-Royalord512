@@ -74,8 +74,8 @@ public class GameOfLife {
 			String str = in.readLine();
 			int length = str.length();
 			if (length != 0) {
-				for (int j = 1; j < length; j++) {
-					if (str.charAt(j) == 'x') {
+				for (int j = 1; j <= length; j++) {
+					if (str.charAt(j-1) == 'x') {
 						board[i][j] = 1;
 					}
 				}
@@ -90,8 +90,8 @@ public class GameOfLife {
 	public static int[][] evolve(int[][] board) {
 		int[][] nextGen = new int[board.length][board[0].length];
 		
-		for (int i = 1; i < board.length - 1; i++) {
-			for (int j = 1; j < board[0].length - 1; j++) {
+		for (int i = 1; i < board.length - 2; i++) {
+			for (int j = 1; j < board[0].length - 2; j++) {
 				nextGen[i][j] = cellValue(board, i, j);
 			}
 		}
@@ -136,8 +136,8 @@ public class GameOfLife {
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
     public static void print(int[][] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr[0].length; j++) {
+		for (int i = 1; i < arr.length - 1; i++) {
+			for (int j = 1; j < arr[0].length - 1; j++) {
 				System.out.printf("%2d ", arr[i][j]);
 			}
 			System.out.println();
